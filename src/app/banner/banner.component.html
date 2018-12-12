@@ -1,0 +1,20 @@
+
+<hr class="m-0" />
+
+<div *ngIf="banner" class="col-xs-12 d-none d-sm-none d-md-block align-items-center justify-content-end position-relative">
+  <img class="banner-img" src="https://www.rogers.com/cms/rogers/page-specific/wireless/wrapped-in-red-2018/images/phase-3/wir-promo-hero-iPhoneX.jpg" />
+  <div class="banner-text-md">
+    <h2>{{ banner.title }}</h2>
+    <p>{{ banner.subtitle }}</p>
+  </div>
+</div>
+
+<div class="col-xs-12 d-md-none align-items-center justify-content-end" *ngIf="banner">
+  <div class="banner-text p-4">
+    <h2>{{ banner.title }}</h2>
+    <p class="mb-0">{{ banner.subtitle }}</p>
+  </div>
+  <img class="banner-img" src="https://www.rogers.com/cms/rogers/page-specific/wireless/wrapped-in-red-2018/images/phase-3/mobile/wir-promo-hero-iPhoneX-mobile.jpg" />
+</div>
+
+<hr class="m-0 mb-3" />
