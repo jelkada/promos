@@ -1,4 +1,17 @@
 
+.bg-red {
+  background-color: #DA291C;
+}
+
+.btn-border {
+  border-color: #EEEEEE;
+  border-radius: 5px;
+}
+
+.btn-bottom-20 {
+  bottom: 20px;
+}
+
 .promo-border {
   border-radius: 10px !important;
 }

@@ -2,7 +2,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ContentfulService} from './contentful.service';
 import {Entry} from 'contentful';
-import {Promo} from './promo/promo.model';
+import {Promo} from './card/promo.model';
 import {Banner} from './banner/banner.model';
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   private entries: Entry<any>[];
   private promos: Promo[];
-  private banner: Banner;
+  private bannerParam: Banner;
 
   constructor (private contentfulService: ContentfulService) {
   }
@@ -24,9 +24,9 @@ export class AppComponent implements OnInit {
     this.contentfulService.getItems()
       .then( () => {
         this.promos = this.contentfulService.getPromos();
-        this.banner = this.contentfulService.getBanner();
+        this.bannerParam = this.contentfulService.getBanner();
         console.log('ngOnInit(): this.promos: ', this.promos);
-        console.log('ngOnInit(): this.banner: ', this.banner);
+        console.log('ngOnInit(): this.banner: ', this.bannerParam);
       });
   }
 

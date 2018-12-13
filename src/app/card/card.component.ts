@@ -4,7 +4,7 @@ import {Promo} from './promo.model';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./promo.component.css']
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
 

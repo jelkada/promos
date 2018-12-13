@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import {createClient, Entry} from 'contentful';
-import {Promo} from './promo/promo.model';
+import {Promo} from './card/promo.model';
 import {Banner} from './banner/banner.model';
 
 
