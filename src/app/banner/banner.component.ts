@@ -11,7 +11,9 @@ export class BannerComponent implements OnInit {
 
   @Input() banner: Banner;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }

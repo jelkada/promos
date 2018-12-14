@@ -29,7 +29,7 @@ export class ContentfulService {
   constructor() { }
 
   getItems(): Promise<void> {
-    return this.cdaClient.getEntries()
+    return this.cdaClient.getEntries({locale:'*'})
       .then((res) => {
         this.entries = res.items;
         console.log('getEntries(): this.entries: ', this.entries);
@@ -55,9 +55,7 @@ export class ContentfulService {
     return this.banner;
   }
 
-  getOffers() {
 
-  }
 
   // getItems(query?: object): Promise<Entry<any>[]> {
   //   return this.cdaClient.getEntries(Object.assign({content_type: CONFIG.contentType}, query))

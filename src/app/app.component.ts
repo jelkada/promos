@@ -5,6 +5,9 @@ import {Entry} from 'contentful';
 import {Promo} from './card/promo.model';
 import {Banner} from './banner/banner.model';
 
+const EN = 'English';
+const FR = 'French';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,8 +19,10 @@ export class AppComponent implements OnInit {
   private entries: Entry<any>[];
   private promos: Promo[];
   private bannerParam: Banner;
+  private lang: string;
 
   constructor (private contentfulService: ContentfulService) {
+    this.lang = EN;
   }
 
   ngOnInit() {
@@ -29,5 +34,17 @@ export class AppComponent implements OnInit {
         console.log('ngOnInit(): this.banner: ', this.bannerParam);
       });
   }
+
+
+  onClickLang() {
+    console.log('lang >> ' + this.lang);
+    if (this.lang === EN) {
+      this.lang = FR;
+    } else {
+      this.lang = EN;
+    }
+
+  }
+
 
 }

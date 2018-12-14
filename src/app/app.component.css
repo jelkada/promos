@@ -3,3 +3,11 @@
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-lang {
+  right: 10px;
+  top: 58px;
+}
