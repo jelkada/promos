@@ -1,20 +1,20 @@
 
-<hr class="m-0" />
 
-<div *ngIf="banner" class="col-xs-12 d-none d-sm-none d-md-block align-items-center justify-content-end position-relative">
-  <img class="banner-img" src="https://www.rogers.com/cms/rogers/page-specific/wireless/wrapped-in-red-2018/images/phase-3/wir-promo-hero-iPhoneX.jpg" />
-  <div class="banner-text-md">
-    <h2>{{ banner.title['en-US'] }}</h2>
-    <p>{{ banner.subtitle['en-US'] }}</p>
+
+<div class="row text-center">
+
+  <hr class="m-0" />
+
+  <div class="col-xs-12 w-100  align-items-center justify-content-end position-relative">
+    <div class="banner-text">
+      <h2>{{ banner.title }}</h2>
+      <p class="mb-0">{{ banner.subtitle }}</p>
+    </div>
+    <img class="banner-img d-none d-sm-none d-md-block" [src]="banner.imgDesktop" />
+    <img class="banner-img d-md-none" [src]="banner.imgMobile" />
   </div>
+
+  <hr class="m-0 mb-3" />
+
 </div>
 
-<div class="col-xs-12 d-md-none align-items-center justify-content-end" *ngIf="banner">
-  <div class="banner-text p-4">
-    <h2>{{ banner.title['en-US'] }}</h2>
-    <p class="mb-0">{{ banner.subtitle['en-US'] }}</p>
-  </div>
-  <img class="banner-img" src="https://www.rogers.com/cms/rogers/page-specific/wireless/wrapped-in-red-2018/images/phase-3/mobile/wir-promo-hero-iPhoneX-mobile.jpg" />
-</div>
-
-<hr class="m-0 mb-3" />

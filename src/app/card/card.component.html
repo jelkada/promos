@@ -1,23 +1,24 @@
 
+
+
   <div class="card h-100 promo-shadow promo-border position-relative">
 
     <div class="card-header w-100 promo-header-border">
-      <h4 class="text-center txtSize20">{{ promo.title['en-US'] }}</h4>
+      <h4 class="text-center txtSize20">{{ card.title }}</h4>
     </div>
 
     <div class="text-center p-2">
-      <img class="promo-img" src="{{ promo['image']['en-US'][0].fields.file['en-US'].url }}" />
+      <img class="promo-img" [src]="card.imgUrl" />
     </div>
 
 
     <div class="card-body border-top my-1 pb-5 mb-5">
-      <!-- <h5 class="card-title" *ngIf="promo.subtitle['en-US']">{{ promo.subtitle['en-US'] }}</h5> -->
-      <p class="card-text txtSize14 h-100" [innerHTML]="promo.desc['en-US']"></p>
+      <p class="card-text txtSize14 h-100" [innerHTML]="card.desc"></p>
     </div>
 
     <div class="position-absolute w-100 text-center btn-bottom-20">
-      <a href="{{ promo['button']['en-US'][1] }}">
-        <button class="btn btn-dark bg-red btn-border p-2 px-4">{{ promo['button']['en-US'][0] }}</button>
+      <a [href]="card.btnUrl">
+        <button class="btn btn-dark bg-red btn-border p-2 px-4">{{ card.btnCopy }}</button>
       </a>
     </div>
 

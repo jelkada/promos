@@ -3,21 +3,13 @@
 
   <div class="row text-center">
     <h1 class="m-4">Promotions</h1>
-    <div class="badge badge-secondary position-absolute cursor-pointer btn-lang p-2" (click)="onClickLang()">{{ lang }}</div>
+    <div class="badge badge-secondary position-absolute cursor-pointer btn-lang p-2"
+         (click)="onClickLang()">{{ lang === 'English' ? 'French' : 'English' }}</div>
   </div>
 
-  <div class="row text-center">
-    <app-banner class="w-100" [banner]="bannerParam"></app-banner>
-  </div>
+  <app-banner ></app-banner>
 
-  <div class="row card-deck p-3 mb-3">
-    <app-card class="col-xs-12 col-md-6 col-lg-4 p-0 mb-4"
-              *ngFor="let promoItem of promos" [promo]="promoItem"></app-card>
-  </div>
+  <app-card-list></app-card-list>
 
 </div>
-
-
-
-
 

@@ -7,6 +7,7 @@
 .banner-text {
   background-color: #EC3024;
   color: white;
+  padding: 20px;
 }
 
 .banner-img {
@@ -14,15 +15,18 @@
   max-width: 100%;
 }
 
-.banner-text-md {
-  position: absolute;
-  top: 25%;
-  left: 48%;
-  max-width: 230px;
-}
-
 .banner-text h2, .banner-text-md h2 {
   font-size: 22px;
 }
 
-
+@media screen and (min-width: 720px) {
+  .banner-text {
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 25%;
+    left: 48%;
+    max-width: 230px;
+    padding: 20px;
+  }
+}

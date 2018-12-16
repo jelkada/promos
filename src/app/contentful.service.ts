@@ -1,8 +1,7 @@
 
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {createClient, Entry} from 'contentful';
-import {Promo} from './card/promo.model';
-import {Banner} from './banner/banner.model';
+import {Subject} from 'rxjs';
 
 
 const CONFIG = {
@@ -17,49 +16,27 @@ const CONFIG = {
 export class ContentfulService {
 
   private entries: Entry<any>[];
-  private promos: Promo[];
-  private banner: Banner;
   // const CMS_ID = 'sys.contentType.sys.id';
+  dataLoaded  = new Subject<{type: string, data: Entry<any>[] | Entry<any>}>();
+  languageChanged  = new Subject<string>();
 
   private cdaClient = createClient({
     space: CONFIG.space,
     accessToken: CONFIG.accessToken
   });
 
-  constructor() { }
+  constructor() {
+  }
 
-  getItems(): Promise<void> {
-    return this.cdaClient.getEntries({locale:'*'})
+  getItems() {
+    this.cdaClient.getEntries({locale: '*'})
       .then((res) => {
         this.entries = res.items;
-        console.log('getEntries(): this.entries: ', this.entries);
-        console.log('getEntries(): this.entries: ', this.entries[0].sys.contentType.sys.id);
-
-        let promoEntries: Entry<any>[];
-        promoEntries = this.entries.filter(obj => obj.sys.contentType.sys.id === 'promoCard');
-        this.promos = promoEntries.map(obj => obj['fields']);
-        console.log('getEntries(): this.promos: ', this.promos);
-
-        let bannerEntry: Entry<any>;
-        bannerEntry = this.entries.find(obj => obj.sys.contentType.sys.id === 'promoHero');
-        this.banner = bannerEntry['fields'];
-        console.log('getEntries(): this.banner: ', this.banner);
+        console.log('ContentfulService: getItems(): getEntries(): this.entries: ', this.entries);
+        const promoEntries = this.entries.filter(obj => obj.sys.contentType.sys.id === 'promoCard');
+        this.dataLoaded.next({type: 'promos', data: promoEntries});
+        const bannerEntry = this.entries.find(obj => obj.sys.contentType.sys.id === 'promoHero');
+        this.dataLoaded.next({type: 'banner', data: bannerEntry});
       });
   }
-
-  getPromos() {
-    return this.promos;
-  }
-
-  getBanner() {
-    return this.banner;
-  }
-
-
-
-  // getItems(query?: object): Promise<Entry<any>[]> {
-  //   return this.cdaClient.getEntries(Object.assign({content_type: CONFIG.contentType}, query))
-  //           .then(res => res.items);
-  // }
-
 }

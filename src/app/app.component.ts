@@ -1,12 +1,9 @@
 
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ContentfulService} from './contentful.service';
-import {Entry} from 'contentful';
-import {Promo} from './card/promo.model';
-import {Banner} from './banner/banner.model';
+import {Globals} from './app.globals';
 
-const EN = 'English';
-const FR = 'French';
+
 
 @Component({
   selector: 'app-root',
@@ -16,34 +13,24 @@ const FR = 'French';
 })
 export class AppComponent implements OnInit {
 
-  private entries: Entry<any>[];
-  private promos: Promo[];
-  private bannerParam: Banner;
-  private lang: string;
+  lang: string;
 
   constructor (private contentfulService: ContentfulService) {
-    this.lang = EN;
+    this.lang = Globals.English;
   }
 
   ngOnInit() {
-    this.contentfulService.getItems()
-      .then( () => {
-        this.promos = this.contentfulService.getPromos();
-        this.bannerParam = this.contentfulService.getBanner();
-        console.log('ngOnInit(): this.promos: ', this.promos);
-        console.log('ngOnInit(): this.banner: ', this.bannerParam);
-      });
+    this.contentfulService.getItems();
   }
 
-
   onClickLang() {
-    console.log('lang >> ' + this.lang);
-    if (this.lang === EN) {
-      this.lang = FR;
+    if (this.lang === Globals.English) {
+      this.lang = Globals.French;
     } else {
-      this.lang = EN;
+      this.lang = Globals.English;
     }
-
+    // console.log('AppComponent: emitting: this.lang: ' + this.lang);
+    this.contentfulService.languageChanged.next(this.lang);
   }
 
 
