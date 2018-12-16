@@ -15,7 +15,7 @@ import {Globals} from '../app.globals';
 
 export class BannerComponent implements OnInit, OnDestroy {
 
-  private banner = new Banner();
+  banner = new Banner();
   private lang = Globals.EN;
 
   private data: Entry<any>[] | Entry<any>;
