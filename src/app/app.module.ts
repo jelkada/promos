@@ -6,6 +6,9 @@ import { CardListComponent } from './card/card-list.component';
 import { CardComponent } from './card/card.component';
 import { BannerComponent } from './banner/banner.component';
 
+// import { ModalModule, BsModalRef } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +17,11 @@ import { BannerComponent } from './banner/banner.component';
     BannerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

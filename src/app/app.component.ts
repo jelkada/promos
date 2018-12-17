@@ -1,9 +1,10 @@
 
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {ContentfulService} from './contentful.service';
 import {Globals} from './app.globals';
 
-
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,9 @@ import {Globals} from './app.globals';
 export class AppComponent implements OnInit {
 
   lang: string;
+  modalRef: BsModalRef;
 
-  constructor (private contentfulService: ContentfulService) {
+  constructor (private modalService: BsModalService, private contentfulService: ContentfulService) {
     this.lang = Globals.English;
   }
 
@@ -33,5 +35,17 @@ export class AppComponent implements OnInit {
     this.contentfulService.languageChanged.next(this.lang);
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template,
+      { backdrop: 'static', keyboard: true, class: 'modal-lg', animated: true });
+  }
 
 }
+
+
+
+
+
+// openModel() {
+//   this.myModal.nativeElement.className = 'modal fade show';
+// }
