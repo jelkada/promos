@@ -3,8 +3,8 @@
 
   <div class="row text-center">
     <div class="col-xs-12">
-      <h1 class="m-4 h1-text d-none d-md-block">Promotions (using Contentful) - <span><a href="https://github.com/jelkada/promos">See on github</a></span></h1>
-      <h1 class="m-4 h1-text d-md-none">Promotions<br/><span><a href="https://github.com/jelkada/promos">See on github</a></span></h1>
+      <h1 class="m-4 margin-bottom-10 h1-text d-none d-md-block">Promotions (using Contentful) - <span><a href="https://github.com/jelkada/promos">See on github</a></span></h1>
+      <h1 class="m-4 margin-bottom-10 h1-text d-md-none">Promotions<br/><span><a href="https://github.com/jelkada/promos">See on github</a></span></h1>
     </div>
   </div>
 
@@ -15,10 +15,10 @@
       <a target="_blank" href="https://cdn.contentful.com/spaces/xbz2r8b6q09c/entries?access_token=a59ba3760cbd6b8f77670a16fdae3753eb4c2eddf4334497dbde53373b26bcb7&locale=*">
         <div class="badge badge-secondary cursor-pointer p-2 mr-2">json of this page</div>
       </a>
+      <div class="badge badge-secondary cursor-pointer p-2 mr-2 mt-2" (click)="openModal(aboutModal)">Integrate in Angular</div>
       <!--<div class="badge badge-secondary cursor-pointer p-2 mr-2" (click)="openModal(apiModal)">API examples</div>-->
-      <!--<div class="badge badge-secondary cursor-pointer p-2 mr-2" (click)="openModal(aboutModal)">About</div>-->
 
-      <div class="badge badge-secondary cursor-pointer p-2 ml-2 float-right"
+      <div class="badge badge-secondary cursor-pointer p-2 ml-2 mt-2 float-right"
          (click)="onClickLang()">{{ lang === 'English' ? 'French' : 'English' }}</div>
     </div>
   </div>
@@ -74,20 +74,37 @@
 
 <ng-template #aboutModal>
   <div class="modal-header">
-    <h5 class="modal-title">About this example</h5>
+    <h5 class="modal-title">How to integrate Contentful in Angular</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li>The purpose the example is to demonstrate the use of the headless Contentful infrastructure in an Angular project.</li>
+      <li><strong>The first step</strong> in using Contentful is to design and define the data/content model.</li>
+      <li>The example uses 2 content model types that were created in Contentful: Banner type and Card type.</li>
+      <li><strong>The second step</strong> is to populate the content using the types defined in the content model.</li>
+      <li>The content includes 1 Banner type instance and 6 Card types that Contentful delivers in a json format.
+        <a target="_blank" href="https://cdn.contentful.com/spaces/xbz2r8b6q09c/entries?access_token=a59ba3760cbd6b8f77670a16fdae3753eb4c2eddf4334497dbde53373b26bcb7&locale=*">See json file in Contentful</a>.
+      </li>
+      <li><strong>The third step</strong> is to integrate and retrieve the content  from Contentful in Angular (using the content delivery API).</li>
+      <li>The Content Delivery API (CDA) is a read-only API for delivering content as JSON data from Contentful.</li>
+      <li>
+        <ul>
+          <li>Include the Contentful package using "npm install contentful".</li>
+          <li>Create a service class to keep all the Contentful related configuration and functionality together.</li>
+          <li>Configure the Contentful client by setting the access token, space id and the desired environment.</li>
+          <li>Set query parameters to define locales/languages and specific content types that should be included in the response (optional).</li>
+          <li>Implement the getEntries() API function to retrieve the json object with the content from the Contentful server.</li>
+          <li>The Contentful API functions returns a promise with the entries result of the asynchronous retrieval operation.</li>
+          <li>It is recommended to get all entries in one http request to reduce page load time and then process the response on the client side in JS.</li>
+          <li>Filter the json response by sys.id which is the content type to initialize and assign to your Angular classes.</li>
+          <li>Enable additional languages if needed, using in the "Locales" option in your space Settings tab.</li>
+          <li>Check the "Enable localization of this field" box for each field in the content model that requires localization.</li>
+          <li>Use the locale query parameter in Contentful client request to get the results in multiple languages.</li>
+        </ul>
+      </li>
     </ul>
   </div>
 </ng-template>
-
-

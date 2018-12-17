@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +7,6 @@ import { CardListComponent } from './card/card-list.component';
 import { CardComponent } from './card/card.component';
 import { BannerComponent } from './banner/banner.component';
 
-// import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
